@@ -36,7 +36,7 @@ model: A text generation model
 model_vision: A vision model that can generate images
 model_image: A pre-trained image generation model
 
-python
+```python
 import streamlit as cl
 import google.generativeai as genai
 
@@ -48,25 +48,26 @@ from google.generativeai.types import HarmCategory,HarmBlockThreshold
 import vertexai
 from vertexai.preview.vision_models import ImageGenerationModel
 
-PROJECT_ID="solid-sun-418711"
-LOCATION="us-west1"
+PROJECT_ID="{YOUR_PROJECT_ID}"
+LOCATION="{YOUR REGION}"
 
 model = genai.GenerativeModel('gemini-pro')
 model_vision = genai.GenerativeModel('models/gemini-pro-vision')
 model_image = ImageGenerationModel.from_pretrained('imagegeneration@006')
+```
 
 ##Step 2: Create a Chatbot Interface
 
 Next, we'll create a simple chatbot interface using Streamlit.
 
-python
+```python
 @cl.on_chat_start
 def on_chat_start():
     print("A new chat session has started!")
 
 @cl.on_message
 async def on_message(message: cl.Message):
-
+```
 
 ##Step 3: Handle Image and Text Generation
 
@@ -74,7 +75,7 @@ Inside the on_message function, we'll handle different types of user input.
 
 If the user uploads an image, we'll use the model_vision model to generate an image in response.
 
-python
+```python
 if(len(message.elements) > 0):
     storage_client = storage.Client()
     bucket = storage_client.bucket('chainlit-genai-vision-bucket')
@@ -88,27 +89,29 @@ if(len(message.elements) > 0):
     bytes = io.BytesIO(blob_as_string)
     img = PIL.Image.open(bytes)
     response = model_vision.generate_content([message.content,img],safety_settings=safety_settings)
+```
 
 If the user enters a text message starting with /imagine, we'll use the model_image model to generate an image based on the prompt.
 
-python
+```python
 elif(message.content.startswith("/imagine")):
     prompt = message.content
 
     response = model_image.generate_images(prompt=prompt)     
-
+```
 
 Otherwise, we'll use the model model to generate text.
 
-python
+```python
 else:
     response = model.generate_content(message.content, safety_settings=safety_settings) 
+```
 
 Step 4: Send the Response
 
 Finally, we'll send the generated response back to the user.
 
-python
+```python
 if(isinstance(response,vertexai.preview.vision_models.ImageGenerationResponse)):
     answer = cl.Message(content="", elements=[cl.Image(url=blob_path, name=file_name, display="inline")])
 
@@ -122,4 +125,4 @@ else:
 
 await answer.send()
 
-
+```
