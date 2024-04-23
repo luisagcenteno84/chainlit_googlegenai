@@ -22,19 +22,18 @@ Google Gen AI is a suite of generative AI models that enables developers to crea
 
 A Google Cloud account
 A Python environment with the following libraries installed:
-streamlit
-google-generativeai
-vertexai
-PIL
-io
+- streamlit
+- google-generativeai
+- vertexai
+- PIL (pillow)
 
 ## Step 1: Initialize the Generative AI Model
 
 First, we need to initialize the Gen AI models that we'll be using. We'll use three models:
 
-model: A text generation model
-model_vision: A vision model that can generate images
-model_image: A pre-trained image generation model
+- model: A text generation model
+- model_vision: A vision model that can generate images
+- model_image: A pre-trained image generation model
 
 ```python
 import streamlit as cl
