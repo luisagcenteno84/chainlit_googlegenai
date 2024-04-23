@@ -1,10 +1,10 @@
-#ChatBot with Image and Text Generation using Google Gen AI
+# ChatBot with Image and Text Generation using Google Gen AI
 
-##Introduction
+## Introduction
 
 Google Gen AI is a suite of generative AI models that enables developers to create text, images, and other types of content. In this blog post, I'll show you how to use Gen AI to build a simple chatbot that can generate both text and images in response to user input.
 
-##Workflow
+## Workflow
 
 ```mermaid
     flowchart LR
@@ -18,7 +18,7 @@ Google Gen AI is a suite of generative AI models that enables developers to crea
         F --> G
 ```
 
-##Prerequisites
+## Prerequisites
 
 A Google Cloud account
 A Python environment with the following libraries installed:
@@ -28,7 +28,7 @@ vertexai
 PIL
 io
 
-##Step 1: Initialize the Generative AI Model
+## Step 1: Initialize the Generative AI Model
 
 First, we need to initialize the Gen AI models that we'll be using. We'll use three models:
 
@@ -56,7 +56,7 @@ model_vision = genai.GenerativeModel('models/gemini-pro-vision')
 model_image = ImageGenerationModel.from_pretrained('imagegeneration@006')
 ```
 
-##Step 2: Create a Chatbot Interface
+## Step 2: Create a Chatbot Interface
 
 Next, we'll create a simple chatbot interface using Streamlit.
 
@@ -69,7 +69,7 @@ def on_chat_start():
 async def on_message(message: cl.Message):
 ```
 
-##Step 3: Handle Image and Text Generation
+## Step 3: Handle Image and Text Generation
 
 Inside the on_message function, we'll handle different types of user input.
 
@@ -107,7 +107,7 @@ else:
     response = model.generate_content(message.content, safety_settings=safety_settings) 
 ```
 
-Step 4: Send the Response
+## Step 4: Send the Response
 
 Finally, we'll send the generated response back to the user.
 
