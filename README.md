@@ -8,9 +8,9 @@ Google Gen AI is a suite of generative AI models that enables developers to crea
 
 ```mermaid
     flowchart LR
-        A(Chainlit Message) -->|Enter Message| B{contains image}
+        A(Chainlit Message) -->|Enter Message| B{contains image?}
         B -->|Yes| C[Use Google Gemini Pro Vision]
-        B -->|No| D{Question starts with '/imagine'}
+        B -->|No| D{Question starts with '/imagine'?}
         D --> |Yes| E(Use VertexAI Image Generation)
         D --> |No| F(Use Google Gemini Pro)
         C --> G(Answer in Chainlit)
