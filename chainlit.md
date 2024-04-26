@@ -2,29 +2,29 @@
 
 ## Getting Started
 
-###Text
+### Text
 
 Ask a question in plain text. The model will try to answer your question based on its knowledge of the world.
 
-###Vision
+### Vision
 
 Upload an image and ask a question (multimodal). The model will try to answer your question based on the image and its knowledge of the world.
 
-###Image Generation
+### Image Generation
 
 Generate an image based on a text prompt. The model will try to generate an image that matches your description.
 
 ## Examples
 
-###Text
+### Text
 
 What is the capital of France?
 
-###Vision
+### Vision
 
 Upload an image of a dog and ask "What kind of dog is this?"
 
-###Image Generation
+### Image Generation
 
 Generate an image of a "cat in a hat"
 
